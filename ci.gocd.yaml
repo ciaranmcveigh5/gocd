@@ -28,8 +28,8 @@ pipelines:
         pipeline: terraformPlan
         stage: build
     stages: # list of stages in order
-      approval: manual
       - testing: # name of stage
+          approval: manual
           clean_workspace: true
           jobs:
             unit: # name of the job
