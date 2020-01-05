@@ -1,7 +1,8 @@
 environments:
   dev:
     pipelines:
-      - yaml-example
+      - examplePipelineBuild
+      - examplePipelineTesting
 pipelines:
   examplePipelineBuild:
     group: terraformBuild
@@ -20,7 +21,7 @@ pipelines:
     group: terraformBuild
     materials:
       upstream:
-        pipeline: examplePipeline1
+        pipeline: examplePipelineBuild
         stage: build
     stages: # list of stages in order
       - testing: # name of stage
