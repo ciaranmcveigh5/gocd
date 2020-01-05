@@ -1,10 +1,32 @@
+environments:
+  dev:
+    pipelines:
+      - yaml-example
 pipelines:
-  group: abc
-  stages:
-    - Build:
-        clean_workspace:  true
-        jobs:
-          Build:
-            tasks:
-              - exec:
-                  command: echo abc
+  examplePipelineBuild:
+    group: terraformBuild
+    stages:
+      - build: # name of stage
+          jobs:
+            build: # name of the job
+              tasks:
+               - exec: # indicates type of task
+                   command: echo building
+  examplePipelineTesting:
+    group: terraformBuild
+    materials:
+      upstream:
+        pipeline: examplePipeline1
+        stage: build
+    stages: # list of stages in order
+      - testing: # name of stage
+          clean_workspace: true
+          jobs:
+            unit: # name of the job
+               - exec: # indicates type of task
+                   command: echo unit
+            integration: # name of the job
+               - exec: # indicates type of task
+                   command: echo integration
+                   
+
