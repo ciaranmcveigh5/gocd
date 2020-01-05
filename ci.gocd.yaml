@@ -1,0 +1,10 @@
+pipelines:
+  group: abc
+  stages:
+    - Build:
+        clean_workspace:  true
+        jobs:
+          Build:
+            tasks:
+              - exec:
+                  command: echo abc
