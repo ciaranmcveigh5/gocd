@@ -20,7 +20,9 @@ pipelines:
               #      destination: buildTest.txt
               tasks:
                - exec: # indicates type of task
-                   command: echo building > build.txt
+                   command: echo
+                   arguments:
+                    - terraform plan > plan.txt
   terraformApply:
     group: terraformBuild
     materials:
@@ -39,6 +41,8 @@ pipelines:
             integration: # name of the job
               tasks:
                - exec: # indicates type of task
-                   command: echo integration
+                   command: echo
+                   arguments:
+                    - terraform apply
                    
 
