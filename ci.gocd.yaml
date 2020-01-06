@@ -22,7 +22,9 @@ pipelines:
                - exec: # indicates type of task
                    command: echo
                    arguments:
-                    - terraform plan > plan.txt
+                    - terraform plan 
+                    - > 
+                    - plan.txt
   terraformApply:
     group: terraformBuild
     materials:
